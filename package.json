@@ -1,0 +1,45 @@
+{
+  "name": "br-class-validator",
+  "version": "1.0.2",
+  "description": "Decorator for CPF",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:versions": "node scripts/test-versions.js",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "keywords": [
+    "cpf",
+    "decorator",
+    "validation",
+    "brazil"
+  ],
+  "author": "Leonardo Tironi",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.5.0",
+    "class-validator": "^0.15.1",
+    "jest": "^30.3.0",
+    "rimraf": "^6.1.3",
+    "ts-jest": "^29.4.6",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "class-validator": "^0.13.0 || ^0.14.0 || ^0.15.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+  "type": "git",
+  "url": "git+https://github.com/leonardotironi/br-class-validator.git"
+  }
+}

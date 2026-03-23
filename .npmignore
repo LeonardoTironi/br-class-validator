@@ -1,0 +1,20 @@
+# Dependências
+/node_modules
+
+# Código fonte e testes
+/src
+/scripts
+/coverage
+jest.config.js
+
+# Configurações de Build
+tsconfig.json
+tsup.config.ts
+
+# Arquivos de Ambiente e Logs
+.env
+.env.*
+*.log
+
+# Sistema
+.DS_Store
