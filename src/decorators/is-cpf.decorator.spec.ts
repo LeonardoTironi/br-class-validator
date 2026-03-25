@@ -35,4 +35,50 @@ describe('IsCPF Decorator', () => {
 
         expect(errors[0].constraints?.IsCpfConstraint).toBe('O valor 11111111111 não é um CPF válido.');
     });
+
+    describe('com opções (maxLength)', () => {
+        class TestCpfMaxLengthDto {
+            @IsCPF({ maxLength: 14 })
+            cpf: string;
+            constructor(cpf: string) {
+                this.cpf = cpf;
+            }
+        }
+
+        it('deve invalidar CPF correto quando passar do tamanho máximo permitido, como com traços e pontos excessivos', () => {
+            const dto = new TestCpfMaxLengthDto('529.....982....247-25');
+            const errors = validateSync(dto);
+
+            expect(errors.length).toBe(1);
+            expect(errors[0].constraints?.IsCpfConstraint).toBe('O valor 529.....982....247-25 não é um CPF válido.');
+        });
+
+        it('não deve invalidar quando o CPF possui tamanho menor ou igual ao permitido', () => {
+            const dtoValidoSemPontos = new TestCpfMaxLengthDto('52998224725');
+            const dtoValidoComPontos = new TestCpfMaxLengthDto('529.982.247-25');
+            
+            const err1 = validateSync(dtoValidoSemPontos);
+            const err2 = validateSync(dtoValidoComPontos);
+
+            expect(err1.length).toBe(0);
+            expect(err2.length).toBe(0);
+        });
+    });
+
+    describe('com opções (message personalizada)', () => {
+        class TestCpfCustomMessageDto {
+            @IsCPF({ message: 'CPF inválido, testes automatizados.' })
+            cpf: string;
+            constructor(cpf: string) {
+                this.cpf = cpf;
+            }
+        }
+
+        it('deve utilizar a mensagem de erro personalizada', () => {
+            const dto = new TestCpfCustomMessageDto('11111111111');
+            const errors = validateSync(dto);
+
+            expect(errors[0].constraints?.IsCpfConstraint).toBe('CPF inválido, testes automatizados.');
+        });
+    });
 });
