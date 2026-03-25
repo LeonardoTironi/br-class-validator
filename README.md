@@ -11,14 +11,14 @@ Uma biblioteca de validação para dados do Brasil desenvolvida para integrar co
 Você pode instalar o pacote via npm, yarn ou pnpm:
 
 ```bash
-npm install br-class-validator class-validator
+npm install br-class-validator
 # ou
-yarn add br-class-validator class-validator
+yarn add br-class-validator
 # ou
-pnpm add br-class-validator class-validator
+pnpm add br-class-validator
 ```
 
-> **Nota:** O `class-validator` é uma dependência de par (_peer dependency_) necessária para o funcionamento desta biblioteca. Versões compatíveis: `^0.13.0`, `^0.14.0`, ou `^0.15.0`.
+> **Nota:** O `class-validator` é uma _peer dependency_ necessária para o funcionamento desta biblioteca. Versões compatíveis: `^0.13.0`, `^0.14.0`, ou `^0.15.0`.
 
 ## Como usar
 
